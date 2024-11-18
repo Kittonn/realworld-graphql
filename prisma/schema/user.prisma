@@ -1,0 +1,15 @@
+model User {
+  id         String             @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  email      String             @unique
+  username   String             @unique
+  password   String
+  bio        String?
+  image      String?            @default("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png")
+  articles   Article[]
+  followedBy UserFollows[]      @relation("followedBy")
+  following  UserFollows[]      @relation("following")
+  comments   Comment[]
+  favorites  ArticleFavorites[]
+
+  @@map("users")
+}

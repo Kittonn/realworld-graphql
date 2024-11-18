@@ -1,0 +1,16 @@
+model Article {
+  id          String             @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  slug        String             @unique
+  title       String
+  description String
+  body        String
+  tags        ArticleTags[]
+  author      User               @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  authorId    String             @map("author_id") @db.Uuid
+  comments    Comment[]
+  favoritedBy ArticleFavorites[]
+  createdAt   DateTime           @default(now()) @map("created_at")
+  updatedAt   DateTime           @updatedAt @map("updated_at")
+
+  @@map("articles")
+}

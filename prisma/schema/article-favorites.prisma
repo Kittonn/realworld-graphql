@@ -1,0 +1,10 @@
+model ArticleFavorites {
+  id        String  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  article   Article @relation(fields: [articleId], references: [id], onDelete: Cascade)
+  articleId String  @map("article_id") @db.Uuid
+  user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String  @map("user_id") @db.Uuid
+
+  @@index([articleId, userId])
+  @@map("article_favorites")
+}

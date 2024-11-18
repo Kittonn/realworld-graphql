@@ -1,0 +1,7 @@
+model Tag {
+  id       String        @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name     String        @unique
+  articles ArticleTags[]
+
+  @@map("tags")
+}

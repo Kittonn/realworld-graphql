@@ -1,0 +1,9 @@
+model UserFollows {
+  followedBy   User   @relation("followedBy", fields: [followedById], references: [id], onDelete: Cascade)
+  followedById String @map("followed_by_id") @db.Uuid
+  following    User   @relation("following", fields: [followingId], references: [id], onDelete: Cascade)
+  followingId  String @map("following_id") @db.Uuid
+
+  @@id([followingId, followedById])
+  @@map("user_follows")
+}

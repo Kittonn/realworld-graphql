@@ -1,8 +1,6 @@
-
 import { Module } from '@nestjs/common';
 
-
-import { EnvModule } from './modules';
+import { EnvModule, PrismaModule } from './modules';
 
 @Module({
   imports: [
@@ -17,6 +15,7 @@ import { EnvModule } from './modules';
     //   plugins: [ApolloServerPluginLandingPageLocalDefault()],
     // }),
     EnvModule,
+    PrismaModule,
   ],
   controllers: [],
   providers: [],
