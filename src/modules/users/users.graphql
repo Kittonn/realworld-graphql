@@ -8,4 +8,5 @@ type User {
 
 type Query {
   me: User!
+  profile(username: String!): User!
 }

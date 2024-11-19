@@ -1,3 +1,4 @@
+import { UserInputError } from '@nestjs/apollo';
 import { Injectable } from '@nestjs/common';
 
 import { Prisma, User } from '@prisma/client';
@@ -56,5 +57,15 @@ export class UsersService {
       data,
       where,
     });
+  }
+
+  async getUserProfile(username: string): Promise<User> {
+    const user = await this.findUnique({ username });
+
+    if (!user) {
+      throw new UserInputError('User not found');
+    }
+
+    return user;
   }
 }

@@ -43,6 +43,8 @@ export class User {
 
 export abstract class IQuery {
     abstract me(): User | Promise<User>;
+
+    abstract profile(username: string): User | Promise<User>;
 }
 
 type Nullable<T> = T | null;
