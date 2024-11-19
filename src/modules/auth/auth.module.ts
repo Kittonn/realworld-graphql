@@ -6,9 +6,10 @@ import { UsersModule } from '../users/users.module';
 
 import { AuthResolver } from './auth.resolver';
 import { AuthService } from './auth.service';
+import { AccessTokenStrategy } from './strategies';
 
 @Module({
   imports: [PassportModule, JwtModule, UsersModule],
-  providers: [AuthResolver, AuthService],
+  providers: [AuthResolver, AuthService, AccessTokenStrategy],
 })
 export class AuthModule {}

@@ -1,3 +1,4 @@
+
 /*
  * -------------------------------------------------------
  * THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
@@ -8,52 +9,40 @@
 /* eslint-disable */
 
 export class LoginInput {
-  email: string;
-  password: string;
+    email: string;
+    password: string;
 }
 
 export class RegisterInput {
-  email: string;
-  password: string;
-  username: string;
-}
-
-export class CreateUserInput {
-  exampleField?: Nullable<number>;
-}
-
-export class UpdateUserInput {
-  id: number;
+    email: string;
+    password: string;
+    username: string;
 }
 
 export class Credentials {
-  accessToken: string;
+    accessToken: string;
 }
 
 export class Auth {
-  credentials: Credentials;
+    credentials: Credentials;
 }
 
 export abstract class IMutation {
-  abstract login(loginInput: LoginInput): Auth | Promise<Auth>;
+    abstract login(loginInput: LoginInput): Auth | Promise<Auth>;
 
-  abstract register(registerInput: RegisterInput): Auth | Promise<Auth>;
-
-  abstract createUser(createUserInput: CreateUserInput): User | Promise<User>;
-
-  abstract updateUser(updateUserInput: UpdateUserInput): User | Promise<User>;
-
-  abstract removeUser(id: number): Nullable<User> | Promise<Nullable<User>>;
+    abstract register(registerInput: RegisterInput): Auth | Promise<Auth>;
 }
 
 export class User {
-  exampleField?: Nullable<number>;
+    id: string;
+    email: string;
+    username: string;
+    bio?: Nullable<string>;
+    image: string;
 }
 
 export abstract class IQuery {
-  abstract users(): Nullable<User>[] | Promise<Nullable<User>[]>;
-
-  abstract user(id: number): Nullable<User> | Promise<Nullable<User>>;
+    abstract me(): User | Promise<User>;
 }
 
 type Nullable<T> = T | null;
