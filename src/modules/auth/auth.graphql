@@ -1,0 +1,23 @@
+type Credentials {
+  accessToken: String!
+}
+
+type Auth {
+  credentials: Credentials!
+}
+
+input LoginInput {
+  email: String!
+  password: String!
+}
+
+input RegisterInput {
+  email: String!
+  password: String!
+  username: String!
+}
+
+type Mutation {
+  login(loginInput: LoginInput!): Auth!
+  register(registerInput: RegisterInput!): Auth!
+}
